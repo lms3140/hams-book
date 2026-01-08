@@ -154,7 +154,7 @@ CREATE TABLE address (
   FOREIGN KEY (member_id) REFERENCES member (member_id)
     ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-drop table address;
+
 -- ============================================================
 -- 🛒 장바구니
 -- ============================================================
@@ -168,7 +168,6 @@ CREATE TABLE cart_item (
   FOREIGN KEY (book_id) REFERENCES book(book_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-drop table cart_item;
 
 -- ============================================================
 -- 🧾 주문 / 주문 상세
@@ -206,10 +205,6 @@ CREATE TABLE order_detail (
     ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-drop table order_detail;
-drop table purchase_order;
-
-use book_store;
 -- ============================================================
 -- 🗂 도서 컬렉션
 -- ============================================================
@@ -376,8 +371,6 @@ JOIN purchase_order po
     ON po.order_id = od.order_id
     AND po.order_status = 'PAID';    
 
-select * from admin_summary_view;
-
 -- top5 가장 많이 팔린 책
 CREATE VIEW top5_quantity_view AS
 SELECT 
@@ -409,20 +402,6 @@ ORDER BY total_revenue DESC
 LIMIT 5;
 
 
-INSERT INTO member (
-  user_id, password, name, phone, email, birth, gender, role, point_balance
-) VALUES (
-  'admin',
-  'admin1234!', 
-  '관리자',
-  '010-0000-0000',
-  'admin@bookshop.com',
-  '1990-01-01',
-  'M',
-  'ADMIN',
-  999999999
-);
-use book_store;
 -- drop view admin_booksales_detail_view;
 CREATE VIEW admin_booksales_detail_view AS
 SELECT 
@@ -435,17 +414,6 @@ FROM purchase_order p
 LEFT JOIN member m ON m.member_id = p.member_id
 LEFT JOIN order_detail o ON o.order_id = p.order_id;
 
-select * from admin_booksales_detail_view;
-select * from member;
-
-select * from review;
-
-select * from address;
-desc address;
-
-select * from order_detail;
-select * from purchase_order;
-select * from inquiry;
 
 
 
