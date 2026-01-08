@@ -1,14 +1,14 @@
 import styles from "./StoreInfo.module.css";
 import { useEffect, useState } from "react";
-import { StoreDetail } from "../../components/StoreInfo/StoreDetail.jsx";
-import { StoreList } from "../../components/StoreInfo/StoreList.jsx";
-import { StoreTab } from "../../components/StoreInfo/StoreTab.jsx";
-import { MenuList } from "../../components/StoreInfo/MenuList.jsx";
+import { StoreDetail } from "../../components/storeInfo/StoreDetail.jsx";
+import { StoreList } from "../../components/storeInfo/StoreList.jsx";
+import { StoreTab } from "../../components/storeInfo/StoreTab.jsx";
+import { MenuList } from "../../components/storeInfo/MenuList.jsx";
 import { axiosData } from "../../utils/dataFetch.js";
-import { StoreMap } from "../../components/StoreInfo/StoreMap.jsx";
+import { StoreMap } from "../../components/storeInfo/StoreMap.jsx";
 import { useNavigate, useParams } from "react-router-dom";
-import { Coming } from "../../components/StoreInfo/Coming.jsx";
-import { Service } from "../../components/StoreInfo/Service.jsx";
+import { Coming } from "../../components/storeInfo/Coming.jsx";
+import { Service } from "../../components/storeInfo/Service.jsx";
 
 export function StoreInfo() {
   const navigate = useNavigate();
