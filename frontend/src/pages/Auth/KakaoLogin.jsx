@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import "../../css/swal.css";
 import { setIsLogin, setUserId } from "../../store/memberSlice.js";
+import { SERVER_URL } from "../../api/config";
 
 // 카카오 로그인 후 토큰을 발급받는 컴포넌트
 export const KakaoLogin = () => {
@@ -58,7 +59,7 @@ export const KakaoLogin = () => {
 
         // 백엔드로 카카오 ID 보내서 JWT 발급받기
         const backendRes = await axios.post(
-          "http://localhost:8080/auth/kakao/login",
+          `${SERVER_URL}/auth/kakao/login`,
           { kakaoId }
         );
 

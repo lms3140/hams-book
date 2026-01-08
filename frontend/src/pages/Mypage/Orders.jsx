@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import style from "./Orders.module.css";
 import { OrderItems } from "./OrderItems";
 import { confirmSwal } from "../../api/api";
+import { SERVER_URL } from "../../api/config";
 
 export function Orders() {
   const [orders, setOrders] = useState([]);
@@ -9,7 +10,7 @@ export function Orders() {
   useEffect(() => {
     const fetchOrders = async () => {
       const token = localStorage.getItem("jwtToken");
-      const res = await fetch("http://localhost:8080/order-history/get", {
+      const res = await fetch(`${SERVER_URL}/order-history/get`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -31,7 +32,7 @@ export function Orders() {
 
     const token = localStorage.getItem("jwtToken");
     const res = await fetch(
-      `http://localhost:8080/order-history/delete/${orderId}`,
+      `${SERVER_URL}/order-history/delete/${orderId}`,
       {
         method: "POST",
         headers: {

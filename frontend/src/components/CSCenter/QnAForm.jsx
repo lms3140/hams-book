@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Checkbox } from "../Checkbox/Checkbox.jsx";
 import { Radio } from "../RadioButton/Radio.jsx";
 import { infoSwal } from "../../api/api.js";
+import { SERVER_URL } from "../../api/config";
 
 export function QnAForm() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export function QnAForm() {
       const token = localStorage.getItem("jwtToken");
       if (!token) return;
 
-      const res = await fetch("http://localhost:8080/member/me", {
+      const res = await fetch(`${SERVER_URL}/member/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -63,7 +64,7 @@ export function QnAForm() {
     e.preventDefault();
     try {
       const data = { memberId, title, content, status: "준비중" };
-      const url = "http://localhost:8080/inquiry/qna";
+      const url = `${SERVER_URL}/inquiry/qna`;
       await axiosPost(url, data);
       await infoSwal(
         "문의가 접수되었어요.",

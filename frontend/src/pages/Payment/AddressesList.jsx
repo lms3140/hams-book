@@ -3,6 +3,7 @@ import styles from "./AddressesList.module.css";
 import axios from "axios";
 import { Radio } from "../../components/RadioButton/Radio.jsx";
 import { AddressModal } from "../Mypage/AddressModal.jsx";
+import { SERVER_URL } from "../../api/config";
 
 export default function AddressesList({ isOpen, onClose, onSelect }) {
   const [addresses, setAddresses] = useState([]);
@@ -13,7 +14,7 @@ export default function AddressesList({ isOpen, onClose, onSelect }) {
   const fetchAddress = async () => {
     try {
       const token = localStorage.getItem("jwtToken");
-      const res = await axios.get("http://localhost:8080/address/get", {
+      const res = await axios.get(`${SERVER_URL}/address/get`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

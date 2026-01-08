@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { SERVER_URL } from "../api/config";
 
 export const useWishlist = (bookId) => {
   const token = localStorage.getItem("jwtToken");
@@ -8,7 +9,7 @@ export const useWishlist = (bookId) => {
   useEffect(() => {
     async function getWish() {
       const resp = await axios.post(
-        `http://localhost:8080/wishlist/exists`,
+        `${SERVER_URL}/wishlist/exists`,
         { bookId },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -23,7 +24,7 @@ export const useWishlist = (bookId) => {
 
   const toggleWish = async () => {
     const resp = await axios.post(
-      `http://localhost:8080/wishlist/toggle`,
+      `${SERVER_URL}/wishlist/toggle`,
       { bookId },
       {
         headers: { Authorization: `Bearer ${token}` },

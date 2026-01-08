@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { SERVER_URL } from "../api/config";
 
 export const fetchBooks = createAsyncThunk("books/fetchBooks", async (kw) => {
   const response = await fetch(
-    `http://localhost:8080/api/search?keyword=${kw}`
+    `${SERVER_URL}/api/search?keyword=${kw}`
   );
   const json = await response.json();
   return json;

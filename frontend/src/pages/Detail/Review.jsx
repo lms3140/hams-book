@@ -8,6 +8,7 @@ import { StarRating } from "../../components/StarRating/StarRating.jsx";  // Sta
 import styles from "./Review.module.css";
 import axios from "axios";
 import dayjs from "dayjs";
+import { SERVER_URL } from "../../api/config";
 
 export default function Review({ bookId }) {
   const [reviews, setReviews] = useState([]);
@@ -23,7 +24,7 @@ export default function Review({ bookId }) {
   const fetchReviews = async (sortParam = sort) => {
     try {
       const data = await axios(
-        `http://localhost:8080/api/reviews?book_id=${bookId}&sort=${sortParam}`
+        `${SERVER_URL}/api/reviews?book_id=${bookId}&sort=${sortParam}`
       );
       setReviews(Array.isArray(data.data) ? data.data : []);
     } catch (e) {
@@ -36,7 +37,7 @@ export default function Review({ bookId }) {
   const fetchSummary = async () => {
     try {
       const data = await axiosData(
-        `http://localhost:8080/api/reviews/summary?book_id=${bookId}`
+        `${SERVER_URL}/api/reviews/summary?book_id=${bookId}`
       );
       setSummary(data);
       console.log(data);

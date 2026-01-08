@@ -3,6 +3,7 @@ import { InfoRow } from "./InfoRow.jsx";
 import { useEffect, useState } from "react";
 import { infoSwal } from "../../api/api.js";
 import { useNavigate } from "react-router-dom";
+import { SERVER_URL } from "../../api/config";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export function Profile() {
     const fetchInfo = async () => {
       const token = localStorage.getItem("jwtToken");
 
-      const res = await fetch("http://localhost:8080/member/me", {
+      const res = await fetch(`${SERVER_URL}/member/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -53,7 +54,7 @@ export function Profile() {
   const handleUpdate = async () => {
     const token = localStorage.getItem("jwtToken");
 
-    const res = await fetch("http://localhost:8080/member/update", {
+    const res = await fetch(`${SERVER_URL}/member/update`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

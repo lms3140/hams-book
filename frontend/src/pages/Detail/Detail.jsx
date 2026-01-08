@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./Detail.module.css";
 import { useGetFetch } from "../../hooks/useGetFetch.js";
+import { SERVER_URL } from "../../api/config";
 import ProductInfo from "./ProductInfo";
 import Review from "./Review";
 import ReturnPolicy from "./ReturnPolicy";
@@ -9,7 +10,7 @@ import UnderBar from "./UnderBar";
 
 export default function Detail() {
   const { bookId } = useParams(); // URL 파라미터에서 bookId 추출
-  const url = `http://localhost:8080/book/detail/${bookId}`;
+  const url = `${SERVER_URL}/book/detail/${bookId}`;
   const { isLoading, isError, data } = useGetFetch(url);
 
   const [count, setCount] = useState(1);

@@ -1,9 +1,10 @@
 import { BookCollectionSection } from "../BookCollectionSection/BookCollectionSection";
 import contentStyle from "./HomeColContent.module.css";
 import { useGetFetch } from "../../../hooks/useGetFetch";
+import { SERVER_URL } from "../../../api/config";
 
 export function HomeColContent() {
-  const url = "http://localhost:8080/book-collection/all";
+  const url = `${SERVER_URL}/book-collection/all`;
   const { isLoading, isError, data } = useGetFetch(url);
 
   if (isLoading || (data && data.length === 0)) {

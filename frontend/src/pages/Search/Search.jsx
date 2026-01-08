@@ -25,6 +25,7 @@ import {
   toggleLike,
 } from "../../store/likedSlice.js";
 import axios from "axios";
+import { SERVER_URL } from "../../api/config";
 
 export function Search() {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ export function Search() {
   useEffect(() => {
     const token = localStorage.getItem("jwtToken");
     const getList = async () => {
-      const resp = await axios.get("http://localhost:8080/wishlist/get", {
+      const resp = await axios.get(`${SERVER_URL}/wishlist/get`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -72,7 +73,7 @@ export function Search() {
 
     const token = localStorage.getItem("jwtToken");
     const resp = await axios.post(
-      "http://localhost:8080/wishlist/add-multi",
+      `${SERVER_URL}/wishlist/add-multi`,
       selectedItems,
       {
         headers: {

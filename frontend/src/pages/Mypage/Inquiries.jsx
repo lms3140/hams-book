@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Inquiries.module.css";
 import { InquiryList } from "./InquiryList";
+import { SERVER_URL } from "../../api/config";
 
 export function Inquiries() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ export function Inquiries() {
     const fetchInquiries = async () => {
       try {
         const token = localStorage.getItem("jwtToken");
-        const res = await fetch("http://localhost:8080/inquiry/member", {
+        const res = await fetch(`${SERVER_URL}/inquiry/member`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

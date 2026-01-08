@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { SERVER_URL } from "../../api/config";
 import "../../css/swal.css";
 import { resetCart } from "../../store/cartSlice.js";
 import { clearCart as clearLocalCart } from "../../utils/cartStorage.js";
@@ -70,7 +71,7 @@ export function Payment() {
   const fetchAddress = async () => {
     try {
       const token = localStorage.getItem("jwtToken");
-      const response = await axios.get("http://localhost:8080/address/get", {
+      const response = await axios.get(`${SERVER_URL}/address/get`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -99,7 +100,7 @@ export function Payment() {
       if (!token) return;
 
       const response = await axios.get(
-        "http://localhost:8080/member/me",
+        `${SERVER_URL}/member/me`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -189,7 +190,7 @@ export function Payment() {
           : firstTitle;
 
       const response = await axios.post(
-        "http://localhost:8080/payment/ready",
+        `${SERVER_URL}/payment/ready`,
         {
           userId: "user123",
           itemName,

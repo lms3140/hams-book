@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import "../../css/swal.css"; // Swal 커스텀 스타일
 import styles from "./ReviewWriteModal.module.css";
 import axios from "axios"; // ✅ axiosData 대신 axios 직접 사용, 헤더 커스터마이징 위해
+import { SERVER_URL } from "../../api/config";
 
 export default function ReviewWriteModal({ bookId, memberId, onClose, onSuccess }) {
   const [rating, setRating] = useState(0);
@@ -34,7 +35,7 @@ export default function ReviewWriteModal({ bookId, memberId, onClose, onSuccess 
 
       // 🔹 axios POST 요청 + Authorization 헤더 추가
       const res = await axios.post(
-        "http://localhost:8080/api/reviews",
+        `${SERVER_URL}/api/reviews`,
         {
           bookId,
           memberId,

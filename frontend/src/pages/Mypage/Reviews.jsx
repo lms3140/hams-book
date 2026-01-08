@@ -4,6 +4,7 @@ import styles from "./Reviews.module.css";
 import dayjs from "dayjs";
 import { StarRating } from "../../components/StarRating/StarRating.jsx";
 import { confirmSwal } from "../../api/api.js";
+import { SERVER_URL } from "../../api/config";
 
 export function Reviews() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export function Reviews() {
   useEffect(() => {
     const fetchReviews = async () => {
       const token = localStorage.getItem("jwtToken");
-      const res = await fetch("http://localhost:8080/api/reviews/my", {
+      const res = await fetch(`${SERVER_URL}/api/reviews/my`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -30,7 +31,7 @@ export function Reviews() {
 
     const token = localStorage.getItem("jwtToken");
     try {
-      await fetch("http://localhost:8080/api/reviews/delete", {
+      await fetch(`${SERVER_URL}/api/reviews/delete`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

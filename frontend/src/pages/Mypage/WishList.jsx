@@ -5,6 +5,7 @@ import styles from "./WishList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../store/cartSlice.js";
 import { confirmSwal, infoSwal } from "../../api/api.js";
+import { SERVER_URL } from "../../api/config";
 import {
   clearSelected,
   selectFilteredSortedBooks,
@@ -21,7 +22,7 @@ export function WishList() {
   useEffect(() => {
     const fetchWish = async () => {
       const token = localStorage.getItem("jwtToken");
-      const res = await fetch("http://localhost:8080/wishlist/get", {
+      const res = await fetch(`${SERVER_URL}/wishlist/get`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -105,7 +106,7 @@ export function WishList() {
     if (!result.isConfirmed) return;
 
     const token = localStorage.getItem("jwtToken");
-    const res = await fetch("http://localhost:8080/wishlist/delete", {
+    const res = await fetch(`${SERVER_URL}/wishlist/delete`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -116,7 +117,7 @@ export function WishList() {
 
     await res.json();
 
-    const res2 = await fetch("http://localhost:8080/wishlist/get", {
+    const res2 = await fetch(`${SERVER_URL}/wishlist/get`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
