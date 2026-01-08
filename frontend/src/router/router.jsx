@@ -6,7 +6,7 @@ import { StoreInfo } from "../pages/StoreInfo/StoreInfo.jsx";
 import { MyPageLayout } from "../pages/Mypage/MyPageLayout.jsx";
 import { Orders } from "../pages/Mypage/Orders.jsx";
 import { NotFound } from "../pages/NotFound/NotFound.jsx";
-import { AuthRouter } from "./authRouter.jsx";
+import { AuthRouter } from "./AuthRouter.jsx";
 
 import { Addresses } from "../pages/Mypage/Addresses.jsx";
 import { Inquiries } from "../pages/Mypage/Inquiries.jsx";
