@@ -77,15 +77,15 @@ export function Footer() {
           </div>
           <div className={styles.footerAddress}>
             <ul>
-              <li>교보문고</li>
-              <li>서울특별시 강남</li>
+              <li>햄스문고</li>
+              <li>햄스특별시 햄남</li>
               <li>대표이사 : 이명석</li>
               <li>사업자 등록번호 : xxx-xx-xxxxx</li>
               <li>대표전화: xxxx-xxxx</li>
               <li>FAX:xxxxx</li>
             </ul>
           </div>
-          <span>AFEC BOOK CENTRE</span>
+          <span>HAMS BOOK CENTRE</span>
         </section>
         <div></div>
       </div>
