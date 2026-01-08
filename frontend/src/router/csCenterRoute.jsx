@@ -4,7 +4,7 @@ import { FaQ } from "../components/CSCenter/FaQ.jsx";
 import { Notice } from "../components/CSCenter/Notice.jsx";
 import { QnAForm } from "../components/CSCenter/QnAForm.jsx";
 import { CSCenter } from "../pages/CSCenter/CSCenter.jsx";
-import { AuthRouter } from "./authRouter.jsx";
+import { AuthRouter } from "./AuthRouter.jsx";
 
 export const csCenterRoute = [
   {
