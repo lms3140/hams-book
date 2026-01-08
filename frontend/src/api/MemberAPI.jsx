@@ -1,11 +1,14 @@
 import axios from "axios";
+import { SERVER_URL } from "./config";
 
-const BASE_URL = "http://localhost:8080/member";
+const BASE_URL = `${SERVER_URL}/member`;
 
 // 회원가입
 export const signupMember = async (memberData) => {
   try {
-    const res = await axios.post(`${BASE_URL}/signup`, memberData, { withCredentials: true });
+    const res = await axios.post(`${BASE_URL}/signup`, memberData, {
+      withCredentials: true,
+    });
     return res.data;
   } catch (err) {
     console.error("[API] 회원가입 실패:", err);
@@ -16,7 +19,11 @@ export const signupMember = async (memberData) => {
 // 로그인
 export const loginMember = async (userId, pwd) => {
   try {
-    const res = await axios.post(`${BASE_URL}/login`, { userId, pwd }, { withCredentials: true });
+    const res = await axios.post(
+      `${BASE_URL}/login`,
+      { userId, pwd },
+      { withCredentials: true }
+    );
     return res.data;
   } catch (err) {
     console.error("[API] 로그인 실패:", err);
@@ -27,7 +34,11 @@ export const loginMember = async (userId, pwd) => {
 // 아이디 중복 체크
 export const checkUserId = async (userId) => {
   try {
-    const res = await axios.post(`${BASE_URL}/idCheck`, { userId }, { withCredentials: true });
+    const res = await axios.post(
+      `${BASE_URL}/idCheck`,
+      { userId },
+      { withCredentials: true }
+    );
     return res.data;
   } catch (err) {
     console.error("[API] 아이디 체크 실패:", err);

@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import { Checkbox } from "../../components/Checkbox/Checkbox.jsx";
 import DaumPostcode from "react-daum-postcode";
 import { CiSearch } from "react-icons/ci";
+import { SERVER_URL } from "../../api/config";
 
 export function AddressModal({ isOpen, onClose, onSaved }) {
   const [addressName, setAddressName] = useState("");
@@ -39,7 +40,7 @@ export function AddressModal({ isOpen, onClose, onSaved }) {
     };
 
     try {
-      const res = await fetch("http://localhost:8080/address/create", {
+      const res = await fetch(`${SERVER_URL}/address/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

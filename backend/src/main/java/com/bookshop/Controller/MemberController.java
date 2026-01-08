@@ -1,7 +1,6 @@
 package com.bookshop.Controller;
 
 import com.bookshop.dto.MemberDto;
-import com.bookshop.entity.Member;
 import com.bookshop.service.JwtService;
 import com.bookshop.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;

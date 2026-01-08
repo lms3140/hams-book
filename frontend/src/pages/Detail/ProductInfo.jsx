@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./Detail.module.css";
 import { useGetFetch } from "../../hooks/useGetFetch";
+import { SERVER_URL } from "../../api/config";
 
 export const ProductInfo = ({ bookId }) => {
-  const url = `http://localhost:8080/book/detail/${bookId}`;
+  const url = `${SERVER_URL}/book/detail/${bookId}`;
   const { data, isLoading, isError } = useGetFetch(url);
 
   if (isLoading) return <div>상품 정보를 불러오는 중...</div>;

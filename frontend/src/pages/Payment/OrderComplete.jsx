@@ -8,6 +8,7 @@ import {
 import paymentStyle from "./Order.module.css";
 import { StepItemNum } from "../../components/Cart/StepItemNum.jsx";
 import axios from "axios";
+import { SERVER_URL } from "../../api/config";
 
 export function OrderComplete() {
   const { orderId } = useParams();
@@ -18,7 +19,7 @@ export function OrderComplete() {
     async function callPost() {
       const token = localStorage.getItem("jwtToken");
       const resp = await axios.post(
-        `http://localhost:8080/payment/approve`,
+        `${SERVER_URL}/payment/approve`,
         {
           orderId,
           pgToken: searchParams.get("pg_token"),

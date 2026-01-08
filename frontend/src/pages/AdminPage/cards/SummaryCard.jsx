@@ -1,9 +1,10 @@
 import { useGetFetch } from "../../../hooks/useGetFetch";
 import cardStyle from "./SummaryCard.module.css";
+import { SERVER_URL } from "../../../api/config";
 
 export function SummaryCard() {
   const { data, isError, isLoading } = useGetFetch(
-    "http://localhost:8080/adminPage/summary"
+    `${SERVER_URL}/adminPage/summary`
   );
 
   if (isLoading) {

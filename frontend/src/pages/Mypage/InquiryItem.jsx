@@ -4,6 +4,7 @@ import { downArrowIcon, upArrowIcon } from "../../components/common/Svgs";
 import dayjs from "dayjs";
 import { confirmSwal } from "../../api/api.js";
 import axios from "axios";
+import { SERVER_URL } from "../../api/config";
 
 export function InquiryItem({ inquiry, onDelete }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -22,7 +23,7 @@ export function InquiryItem({ inquiry, onDelete }) {
 
     const token = localStorage.getItem("jwtToken");
     await axios.post(
-      "http://localhost:8080/inquiry/delete",
+      `${SERVER_URL}/inquiry/delete`,
       {
         inquiryId: inquiry.inquiryId,
       },

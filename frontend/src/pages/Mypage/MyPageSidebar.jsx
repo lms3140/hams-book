@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./MyPageSidebar.module.css";
 import { useEffect, useState } from "react";
+import { SERVER_URL } from "../../api/config.js";
 
 export function MyPageSidebar() {
   const [member, setMember] = useState(null);
@@ -11,7 +12,7 @@ export function MyPageSidebar() {
       if (!token) return;
 
       try {
-        const res = await fetch("http://localhost:8080/member/me", {
+        const res = await fetch(`${SERVER_URL}/member/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

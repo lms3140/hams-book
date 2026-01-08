@@ -3,6 +3,7 @@ import { Radio } from "../../components/RadioButton/Radio.jsx";
 import { AddressModal } from "./AddressModal.jsx";
 import { useEffect, useState } from "react";
 import { confirmSwal } from "../../api/api.js";
+import { SERVER_URL } from "../../api/config";
 
 export function Addresses() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,7 +15,7 @@ export function Addresses() {
   //주소 불러오기
   const fetchAddress = async () => {
     const token = localStorage.getItem("jwtToken");
-    const res = await fetch("http://localhost:8080/address/get", {
+    const res = await fetch(`${SERVER_URL}/address/get`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -41,7 +42,7 @@ export function Addresses() {
     if (!selectedAddressId) return;
 
     const token = localStorage.getItem("jwtToken");
-    const res = await fetch("http://localhost:8080/address/set-default", {
+    const res = await fetch(`${SERVER_URL}/address/set-default`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -74,7 +75,7 @@ export function Addresses() {
     if (!result.isConfirmed) return;
 
     const token = localStorage.getItem("jwtToken");
-    const res = await fetch("http://localhost:8080/address/delete", {
+    const res = await fetch(`${SERVER_URL}/address/delete`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

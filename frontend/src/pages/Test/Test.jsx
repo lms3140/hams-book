@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { SERVER_URL } from "../../api/config";
 
 export function Test() {
   const [data, setData] = useState([]);
@@ -7,7 +8,7 @@ export function Test() {
     const testCall = async () => {
       const token = localStorage.getItem("jwtToken");
 
-      const resp = await axios("http://localhost:8080/order-history/get", {
+      const resp = await axios(`${SERVER_URL}/order-history/get`, {
         headers: { Authorization: `Bearer ${token}` },
         method: "POST",
       });

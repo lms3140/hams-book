@@ -6,6 +6,7 @@ import Terms from "./Terms.jsx";
 import { signupMember } from "../../api/MemberAPI.jsx";
 import Swal from "sweetalert2";
 import "../../css/swal.css";
+import { SERVER_URL } from "../../api/config";
 
 export const Signup = () => {
     const navigate = useNavigate();
@@ -106,7 +107,7 @@ export const Signup = () => {
         }
 
         try {
-            const res = await fetch("http://localhost:8080/member/idCheck", {
+            const res = await fetch(`${SERVER_URL}/member/idCheck`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ userId: formData.id }),
