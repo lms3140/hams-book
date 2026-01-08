@@ -14,7 +14,7 @@ export function StoreInfo() {
   const navigate = useNavigate();
   const [info, setInfo] = useState(); //json 데이터
   const [activeTab, setActiveTab] = useState("seoul"); //활성화된 탭 (서울, 경기/인천, 수도권 외)
-  const [selectedStore, setSelectedStore] = useState(null); //선택된 매장
+  const [selectedStore, setSelectedStore] = useState(null); //선택된 매장-
   const { pid } = useParams();
 
   //url id로 매핑해서 이동
