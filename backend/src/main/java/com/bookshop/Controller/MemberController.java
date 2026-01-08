@@ -54,7 +54,7 @@ public class MemberController {
         ResponseCookie cookie = ResponseCookie.from("accessToken", token)
                 .httpOnly(true)
                 .secure(true)
-                .sameSite("Strict")
+                .sameSite("None")
                 .path("/")
                 .maxAge(60 * 60 * 24 * 7)
                 .build();
@@ -203,5 +203,27 @@ public class MemberController {
             return ResponseEntity.status(400).body("Invalid current password");
         }
         return ResponseEntity.ok(Map.of("update", true));
+    }
+
+    @GetMapping("/me-cookie")
+    public ResponseEntity<?> getMyInfoByCookie(
+            @CookieValue(name = "accessToken", required = false) String token) {
+
+        if (token == null) {
+            return ResponseEntity.status(401).body("No token");
+        }
+
+        if (!jwtService.validateToken(token)) {
+            return ResponseEntity.status(401).body("Invalid or expired JWT");
+        }
+
+        String userId = jwtService.getUserId(token);
+        MemberDto memberDto = memberService.getMemberInfo(userId);
+
+        if (memberDto == null) {
+            return ResponseEntity.status(404).body("User not found");
+        }
+
+        return ResponseEntity.ok(memberDto);
     }
 }

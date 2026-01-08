@@ -58,9 +58,10 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOriginPatterns(
-                                "http://localhost:*",
-                                "https://*.vercel.app"
+                        .allowedOrigins(
+                                "http://localhost:3000",
+                                "https://hams-book-admin.vercel.app",
+                                "https://hams-book-i8v7.vercel.app"
                         )
                         .allowedMethods("*")
                         .allowCredentials(true)
