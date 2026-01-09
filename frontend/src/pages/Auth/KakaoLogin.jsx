@@ -40,7 +40,7 @@ export const KakaoLogin = () => {
           new URLSearchParams({
             grant_type: "authorization_code",
             client_id: "faa41cfd2406bc361c3eb40aa4fb7ceb", // 실제 카카오 REST API 키
-            redirect_uri: "http://localhost:5173/auth/kakao/callback", // 리다이렉트 URI
+            redirect_uri: "https://hams-book.vercel.app/auth/kakao/callback", // 리다이렉트 URI
             code: code, // URL에서 받은 인가 코드
             client_secret: "PHItwtu9LhGh8FmQFesCzcZ8dGelUM0f",
           }),
@@ -58,10 +58,9 @@ export const KakaoLogin = () => {
         const kakaoId = payload.sub;
 
         // 백엔드로 카카오 ID 보내서 JWT 발급받기
-        const backendRes = await axios.post(
-          `${SERVER_URL}/auth/kakao/login`,
-          { kakaoId }
-        );
+        const backendRes = await axios.post(`${SERVER_URL}/auth/kakao/login`, {
+          kakaoId,
+        });
 
         if (backendRes.data && backendRes.data.jwtToken) {
           const { jwtToken } = backendRes.data;
@@ -75,11 +74,11 @@ export const KakaoLogin = () => {
           Swal.fire({
             title: "로그인 성공",
             confirmButtonText: "확인",
-              customClass: {
-                popup: "customPopup",
-                title: "customTitle",
-                confirmButton: "customConfirmButton",
-              },
+            customClass: {
+              popup: "customPopup",
+              title: "customTitle",
+              confirmButton: "customConfirmButton",
+            },
           });
           navigate("/"); // 메인 페이지로 리디렉션
         } else {
