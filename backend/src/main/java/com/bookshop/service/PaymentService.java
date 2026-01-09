@@ -28,7 +28,7 @@ public class PaymentService {
     @Value("${kakaopay.cid}")
     private String cid;
 
-    private static final String FRONT = "http://localhost:5173";
+    private static final String FRONT = "https://hams-book.vercel.app";
 
     /**
      * 결제 준비
