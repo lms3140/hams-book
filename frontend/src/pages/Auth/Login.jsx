@@ -129,7 +129,7 @@ export const Login = () => {
   };
 
   const handleKakaoAuth = () => {
-    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=faa41cfd2406bc361c3eb40aa4fb7ceb&redirect_uri=${SERVER_URL}/auth/kakao/callback&response_type=code`;
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=faa41cfd2406bc361c3eb40aa4fb7ceb&redirect_uri=https://hams-book.vercel.app/auth/kakao/callback&response_type=code`;
   };
 
   return (
