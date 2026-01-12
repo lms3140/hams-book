@@ -61,7 +61,7 @@ public class SecurityConfig {
                         .allowedOrigins(
                                 "http://localhost:3000",
                                 "https://hams-book-admin.vercel.app",
-                                "https://hams-book-i8v7.vercel.app"
+                                "https://hams-book.vercel.app/"
                         )
                         .allowedMethods("*")
                         .allowCredentials(true)

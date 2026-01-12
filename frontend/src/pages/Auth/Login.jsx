@@ -12,6 +12,7 @@ import { setIsLogin, setUserId } from "../../store/memberSlice.js";
 
 import cstyles from "./Logo.module.css";
 import styles from "./Login.module.css";
+import { SERVER_URL } from "../../api/config.js";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ export const Login = () => {
   useEffect(() => {
     const savedId = localStorage.getItem("savedUserId");
     if (savedId) {
-      setFormData(prev => ({ ...prev, userId: savedId, saveId: true }));
+      setFormData((prev) => ({ ...prev, userId: savedId, saveId: true }));
     }
 
     const token = localStorage.getItem("jwtToken");
@@ -74,7 +75,8 @@ export const Login = () => {
         localStorage.setItem("jwtToken", res.token);
 
         // 아이디 저장 체크
-        if (formData.saveId) localStorage.setItem("savedUserId", formData.userId);
+        if (formData.saveId)
+          localStorage.setItem("savedUserId", formData.userId);
         else localStorage.removeItem("savedUserId");
 
         // Redux 상태 갱신
@@ -127,7 +129,7 @@ export const Login = () => {
   };
 
   const handleKakaoAuth = () => {
-    window.location.href = "https://kauth.kakao.com/oauth/authorize?client_id=faa41cfd2406bc361c3eb40aa4fb7ceb&redirect_uri=http://localhost:5173/auth/kakao/callback&response_type=code";
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=faa41cfd2406bc361c3eb40aa4fb7ceb&redirect_uri=${SERVER_URL}/auth/kakao/callback&response_type=code`;
   };
 
   return (
@@ -174,7 +176,9 @@ export const Login = () => {
 
         {error && <p className={styles.error}>{error}</p>}
 
-        <button type="submit" className={styles.btnLogin}>로그인</button>
+        <button type="submit" className={styles.btnLogin}>
+          로그인
+        </button>
 
         <div className={styles.loginLinks}>
           <Link to="/signup-intro">회원가입</Link>
@@ -191,18 +195,18 @@ export const Login = () => {
             onClick={handleKakaoAuth}
           >
             <img
-                src="/images/auth/kakao_login.png"
-                alt="카카오 로그인"
-                className={styles.kakaoImg}
-              />
+              src="/images/auth/kakao_login.png"
+              alt="카카오 로그인"
+              className={styles.kakaoImg}
+            />
           </button>
-{/*           <button type="button" className={styles.btnNaver}>네이버 로그인</button> */}
-{/*           <button type="button" className={styles.btnGoogle}>구글 로그인</button> */}
+          {/*           <button type="button" className={styles.btnNaver}>네이버 로그인</button> */}
+          {/*           <button type="button" className={styles.btnGoogle}>구글 로그인</button> */}
         </div>
 
-{/*         <div className={styles.guestLink}> */}
-{/*           <a href="#">비회원 주문조회</a> */}
-{/*         </div> */}
+        {/*         <div className={styles.guestLink}> */}
+        {/*           <a href="#">비회원 주문조회</a> */}
+        {/*         </div> */}
       </form>
     </div>
   );
