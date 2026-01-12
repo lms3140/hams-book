@@ -60,6 +60,7 @@ export const KakaoLogin = () => {
         // 백엔드로 카카오 ID 보내서 JWT 발급받기
         const backendRes = await axios.post(`${SERVER_URL}/auth/kakao/login`, {
           kakaoId,
+          nickname: "kakao유저",
         });
 
         if (backendRes.data && backendRes.data.jwtToken) {
