@@ -21,7 +21,7 @@ export function CSCenter() {
       <div className={styles.content}>
         <h1>무엇을 도와드릴까요?</h1>
         <h1>
-          <span>교보문고 고객센터</span>입니다.
+          <span>햄스문고 고객센터</span>입니다.
         </h1>
 
         <div className={styles.qnaSection}>
