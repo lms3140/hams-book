@@ -233,7 +233,7 @@ export function WishList() {
         <div className={styles.noData}>
           <img src="/images/mypage/ico_nodata.png" alt="" />
           <p className={styles.noDataInfo}>찜한 상품이 없습니다.</p>
-          <p>교보문고의 다양한 상품과 콘텐츠를 둘러보세요!</p>
+          <p>햄스문고의 다양한 상품과 콘텐츠를 둘러보세요!</p>
           <button onClick={() => navigate("/")}>계속 쇼핑하기</button>
         </div>
       )}

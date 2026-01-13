@@ -109,7 +109,7 @@ export function Reviews() {
         <div className={styles.noData}>
           <img src="/images/mypage/ico_nodata.png" alt="" />
           <p className={styles.noDataInfo}>작성한 리뷰가 없습니다.</p>
-          <p>교보문고의 다양한 상품과 콘텐츠를 둘러보세요!</p>
+          <p>햄스문고의 다양한 상품과 콘텐츠를 둘러보세요!</p>
           <button onClick={() => navigate("/")}>둘러보기</button>
         </div>
       )}
